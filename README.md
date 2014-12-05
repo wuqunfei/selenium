@@ -9,5 +9,5 @@
 ## How to Use it on App Cloud? 
 ------
 > * Add localBindingHost and localBindingPort for redirect on App CLoud
-> *Example: -host $OPENSHIFT_GEAR_DNS -port 80 -localBindingHost $OPENSHIFT_DIY_IP -localBindingPort $OPENSHIFT_DIY_PORT
+> * Example: -host $OPENSHIFT_GEAR_DNS -port 80 -localBindingHost $OPENSHIFT_DIY_IP -localBindingPort $OPENSHIFT_DIY_PORT
 
