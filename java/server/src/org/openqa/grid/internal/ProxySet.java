@@ -23,12 +23,7 @@ import org.openqa.grid.common.exception.CapabilityNotPresentOnTheGridException;
 import org.openqa.grid.common.exception.GridException;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArraySet;
 import java.util.logging.Logger;
 
@@ -132,7 +127,7 @@ public class ProxySet implements Iterable<RemoteProxy> {
     // proxies.
     List<RemoteProxy> sorted = getSorted();
     log.info("Available nodes: " + sorted);
-
+    Collections.shuffle(sorted,new Random(System.nanoTime()));
     for (RemoteProxy proxy : sorted) {
       TestSession session = proxy.getNewSession(desiredCapabilities);
       if (session != null) {

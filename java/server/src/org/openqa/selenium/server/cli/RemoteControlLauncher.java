@@ -139,6 +139,10 @@ public class RemoteControlLauncher {
         configuration.setCaptureLogsOnQuit(true);
       } else if ("-port".equalsIgnoreCase(arg)) {
         configuration.setPort(Integer.parseInt(getArg(args, ++i)));
+      } else if ("-localBindingHost".equalsIgnoreCase(arg)) {
+          configuration.setLocalBindingHost(getArg(args, ++i));
+      } else if ("-localBindingPort".equalsIgnoreCase(arg)) {
+          configuration.setLocalBindingPort(Integer.parseInt(getArg(args, ++i)));
       } else if ("-multiWindow".equalsIgnoreCase(arg)) {
         configuration.setSingleWindow(!true);
       } else if ("-singleWindow".equalsIgnoreCase(arg)) {

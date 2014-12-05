@@ -1312,6 +1312,7 @@ public class HtmlUnitDriver implements WebDriver, JavascriptExecutor,
     public void refresh() {
       if (lastPage() instanceof HtmlPage) {
         try {
+          getWebClient().getCache().clear();
           ((HtmlPage) lastPage()).refresh();
         } catch (SocketTimeoutException e) {
           throw new TimeoutException(e);
@@ -1335,11 +1336,12 @@ public class HtmlUnitDriver implements WebDriver, JavascriptExecutor,
     public void addCookie(Cookie cookie) {
       Page page = lastPage();
       if (!(page instanceof HtmlPage)) {
-        throw new UnableToSetCookieException("You may not set cookies on a page that is not HTML");
+        //throw new UnableToSetCookieException("You may not set cookies on a page that is not HTML");
       }
 
-      String domain = getDomainForCookie();
-      verifyDomain(cookie, domain);
+      //String domain = getDomainForCookie();
+	String domain = cookie.getDomain();
+      // verifyDomain(cookie, domain);
 
       getWebClient().getCookieManager().addCookie(
           new com.gargoylesoftware.htmlunit.util.Cookie(domain, cookie.getName(),

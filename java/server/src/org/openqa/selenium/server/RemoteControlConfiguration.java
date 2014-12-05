@@ -37,6 +37,8 @@ public class RemoteControlConfiguration {
   public static final int DEFAULT_TIMEOUT_IN_SECONDS = 30 * MINUTES;
   public static final int DEFAULT_RETRY_TIMEOUT_IN_SECONDS = 10;
 
+  private String localBindingHost;
+  private int localBindingPort;
   private int port;
   private File profilesLocation;
   private boolean proxyInjectionModeArg;
@@ -82,6 +84,8 @@ public class RemoteControlConfiguration {
   private int jettyThreads = 512;
   private SslCertificateGenerator sslCertGenerator;
   private boolean singleWindow;
+
+
 
 
   public RemoteControlConfiguration() {
@@ -358,6 +362,21 @@ public class RemoteControlConfiguration {
   public int getJettyThreads() {
     return jettyThreads;
   }
+    public String getLocalBindingHost() {
+        return localBindingHost;
+    }
+
+    public void setLocalBindingHost(String localBindingHost) {
+        this.localBindingHost = localBindingHost;
+    }
+
+    public int getLocalBindingPort() {
+        return localBindingPort;
+    }
+
+    public void setLocalBindingPort(int localBindingPort) {
+        this.localBindingPort = localBindingPort;
+    }
 
   public void setJettyThreads(int jettyThreads) {
     final int MAX_JETTY_THREADS = 1024;

@@ -399,11 +399,16 @@ public class TestSession {
       proxyRequest = new BasicHttpRequest(request.getMethod(), uri);
     }
 
+      proxyRequest.setHeader("Host",remoteURL.getHost());
     for (Enumeration<?> e = request.getHeaderNames(); e.hasMoreElements(); ) {
       String headerName = (String) e.nextElement();
 
       if ("Content-Length".equalsIgnoreCase(headerName)) {
         continue; // already set
+      }
+
+      if ("Host".equalsIgnoreCase(headerName)){
+          continue;
       }
 
       proxyRequest.setHeader(headerName, request.getHeader(headerName));

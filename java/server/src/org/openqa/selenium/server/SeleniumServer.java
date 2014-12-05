@@ -54,6 +54,7 @@ import java.net.BindException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.Properties;
+import java.net.UnknownHostException;
 
 /**
  * Provides a server that can launch/terminate browsers and can receive remote Selenium commands
@@ -317,8 +318,22 @@ public class SeleniumServer implements SslCertificateGenerator {
     socketListener = new SocketListener();
     socketListener.setMaxIdleTimeMs(60000);
     socketListener.setMaxThreads(jettyThreads);
-    socketListener.setPort(getPort());
-    server.addListener(socketListener);
+//    socketListener.setPort(getPort());
+
+      try {
+          if (configuration.getLocalBindingHost() != null) {
+              socketListener.setHost(configuration.getLocalBindingHost());
+          }
+      } catch (UnknownHostException e) {
+          LOGGER.error("Can't bind host");
+      }
+      if (configuration.getLocalBindingPort() != 0 ) {
+          socketListener.setPort(configuration.getLocalBindingPort());
+      } else {
+          socketListener.setPort(getPort());
+      }
+
+      server.addListener(socketListener);
     assembleHandlers(slowResources, configuration);
   }
 
