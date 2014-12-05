@@ -1,3 +1,12 @@
+# my version of 2.40.0:
+
+1.fix htmlunit cache problem, clean cache by new method …
+2.Add params that can support deploy on Pass cloud like heroku, openshift node
+3.fix binding host function is not working bug
+4.fix http header redirect not working problem
+5.make arrange node form sort to random to improve performance
+
+
 # Selenium
 
 Selenium is an umbrella project for various tools and libraries that
